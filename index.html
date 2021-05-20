@@ -84,9 +84,9 @@
 
                         </div>
 
-                        <div id="lista_contatti" v-for="contact in contacts">
+                        <div id="lista_contatti">
 
-                            <div class="d-flex align-items-center justify-content-between p-2 bg_lightgray">
+                            <div class="d-flex align-items-center justify-content-between p-2 bg_lightgray" v-for="contact in contacts">
 
                                 <div class="avatar d-flex align-items-center">
     
@@ -135,8 +135,16 @@
                         <div id="main_chat">
 
                             <div class="text_area" v-for="contact in contacts">
-                                <div class="message" v-for="message in contact">
-                                    <h3>{{message.text}}</h3>
+                                <div class="message" v-for="message in contact.messages">
+                                    
+                                    <div class="received bg_green" v-if="message.status === 'received'">
+                                        <h3>{{ message.text }}</h3>
+                                    </div>
+
+                                    <div class="sent bg-white" v-if="message.status === 'sent'">
+                                        <h3>{{ message.text }}</h3>
+                                    </div>
+                                    
                                 </div>
                             </div>
 
@@ -147,7 +155,7 @@
                         <div id="barra_main_bot" class="d-flex justify-content-between align-items-center bg_lightgray">
 
                             <i class="far fa-smile"></i>
-                            <input type="text">
+                            <input type="text" v-model="newMessage" @keyup="sendMessage()">
                             <i class="fas fa-microphone"></i>
 
 

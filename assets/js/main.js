@@ -4,6 +4,10 @@ const app = new Vue ({
 
     data: {
         
+        
+        
+        sentMessages: [],
+
         contacts: [
         {
             name: 'Michele',
@@ -92,8 +96,23 @@ const app = new Vue ({
     ]},
 
     methods: {
-        
-    }
+
+        sendMessage () {
+            console.log(this.newMessage);
+            this.sentMessages.push(this.newMessage);
+        }
+            
+       
+    },
+
+    mounted () {
+        document.addEventListener("keyup", (event) => {
+            if (event.key == "Enter") {
+                this.sendMessage();
+            } 
+        });
+
+    },
 
 })
 
