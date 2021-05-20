@@ -24,20 +24,20 @@
     <body>
 
         
-        <div class="container">
+        
 
             <div id="app">
 
-                <div class="row">
-
-                    <div class="col-5 p-2 border-right">
+                <div class="container m-auto d-flex">
+                    
+                    <div class="col-5 border-right bg_lightgray">
                         
-                        <div id="utente" class="d-flex align-items-center justify-content-between p-2 bg_lightgray">
+                        <div id="utente" class="top_bar_user d-flex align-items-center justify-content-between p-2 bg_lightgray">
 
                             <div class="avatar d-flex align-items-center">
 
                                 <img src="./assets/img/avatar_io.jpg" alt="">
-                                <div class="nome_utente_lista">
+                                <div class="nome_utente_lista ml-3">
                                     Nome Utente
                                 </div>
 
@@ -53,7 +53,7 @@
 
                         </div>
 
-                        <div id="barra_notifiche" class="d-flex align-content-center  p-2">
+                        <div id="barra_notifiche" class="d-flex align-items-center p-4">
 
                             <i id="campana" class="fas fa-bell-slash text-white rounded-circle"></i>
                             
@@ -69,29 +69,27 @@
 
                         </div>
 
-                        <div id="barra_ricerca">
+                        <div id="barra_ricerca bg-white">
                             
-                            <form class="form-inline">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-white border-right-0" id="basic-addon1">
-                                            <i class="fas fa-search"></i>
-                                        </span>
-                                    </div>
-                                    <input type="text" class="form-control border-left-0" placeholder="Crea o inizia una nuova chat">
-                                </div>
-                             </form>
+                            <div class="input-group p-2">
+                                
+                                <span class="input-group-text bg-white border-right-0" id="basic-addon1">
+                                    <i class="fas fa-search"></i>
+                                </span>    
+                               
+                                <input type="text" class="form-control border-left-0" placeholder="Crea o inizia una nuova chat">
+                            </div>
 
                         </div>
 
                         <div id="lista_contatti">
 
-                            <div class="d-flex align-items-center justify-content-between p-2 bg_lightgray" v-for="contact in contacts">
+                            <div class="d-flex align-items-center justify-content-between p-2" v-for="contact in contacts">
 
                                 <div class="avatar d-flex align-items-center">
     
                                     <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="">
-                                    <div class="nome_utente_lista">
+                                    <div class="nome_utente_lista ml-3">
                                         {{ contact.name }}
                                     </div>
     
@@ -104,17 +102,17 @@
 
                     <div class="col-7">
 
-                        <div id="barra_main_top" class="d-flex justify-content-between align-items-center bg_lightgray">
+                        <div id="barra_main_top" class="top_bar_user d-flex justify-content-between align-items-center bg_lightgray">
 
                             <div class="avatar d-flex align-items-center">
 
                                 <img src="./assets/img/avatar_io.jpg" alt="">
 
                                 <div class="ultimo_accesso">
-                                    <div class="nome_utente_lista">
+                                    <div class="nome_utente_lista ml-3">
                                         Nome Utente
                                     </div>
-                                    <div class="ultimo_accesso_text">
+                                    <div class="ultimo_accesso_text ml-3">
                                         Ultimo accesso oggi alle
                                     </div>
                                 </div>
@@ -137,25 +135,29 @@
                             <div class="text_area" v-for="contact in contacts">
                                 <div class="message" v-for="message in contact.messages">
                                     
-                                    <div class="received bg_green" v-if="message.status === 'received'">
-                                        <h3>{{ message.text }}</h3>
+                                    <div class="received p-3" v-if="message.status === 'received'">
+
+                                        <span class="chat_message bg_green">{{ message.text }}</span>
+                                    
                                     </div>
 
-                                    <div class="sent bg-white" v-if="message.status === 'sent'">
-                                        <h3>{{ message.text }}</h3>
+                                    <div class="sent" v-if="message.status === 'sent'">
+
+                                        <span class="chat_message bg-white">{{ message.text }}</span>
+                                    
                                     </div>
                                     
                                 </div>
                             </div>
-
-                            
 
                         </div>
                         
                         <div id="barra_main_bot" class="d-flex justify-content-between align-items-center bg_lightgray">
 
                             <i class="far fa-smile"></i>
-                            <input type="text" v-model="newMessage" @keyup="sendMessage()">
+                            
+                            <input type="text" v-model="newMessage" @keyup.enter="sendMessage">
+                            
                             <i class="fas fa-microphone"></i>
 
 
@@ -167,7 +169,6 @@
 
             </div>
 
-        </div>
        
         
 
