@@ -1,0 +1,53 @@
+/* Common */
+body {
+    background-color: #dbdbd3;
+    height: 100vh;
+    padding: 2.5rem 0;
+}
+.container {
+    height: 90vh;
+    background-color: white;
+}
+i {
+    color: #b1b1b1;
+    font-size: 30px;
+}
+
+/* Sidebar */
+#barra_notifiche {
+    background-color: #8edafc;
+}
+.fa-bell-slash:before {
+    content: "\f1f6";
+    background-color: white;
+    color: #8edafc;
+    border-radius: 50px;
+}
+a {
+    color: gray;
+    text-decoration: underline;
+}
+
+input {
+    width: 500px;
+}
+
+/* main */
+.dbg {
+    background-color: beige;
+}
+
+/*  */
+img {
+    height: 90px;
+    border-radius: 80px;
+}
+.nome_utente_lista {
+    font-weight: 450;
+    font-size: 20px;
+}
+
+/* Utilities */
+.bg_lightgray {
+    background-color: #eaeaea;
+}
