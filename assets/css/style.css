@@ -7,49 +7,64 @@ body {
 .container {
     height: 90vh;
     background-color: white;
+    padding: 0;
+    margin: 0;
+}
+.col-5, .col-7 {
+    padding: 0;
+    margin: 0;
+    height: 100%;
 }
 i {
     color: #b1b1b1;
     font-size: 30px;
+    margin: 0 1rem;
+}
+.nome_utente_lista {
+    font-weight: 450;
+    font-size: 20px;
+}
+img {
+    height: 90px;
+    border-radius: 80px;
+}
+
+.top_bar_user {
+    height: 15vh;
 }
 
 /* Sidebar */
 #barra_notifiche {
     background-color: #8edafc;
 }
+
 .fa-bell-slash:before {
     content: "\f1f6";
     background-color: white;
     color: #8edafc;
     border-radius: 50px;
+    padding: 1rem;
+    margin-right: 1rem;
 }
 a {
     color: gray;
     text-decoration: underline;
 }
-
-input {
-    width: 500px;
+.form-control {
+    height: 50px;
 }
-
 /* main */
-#lista_contatti {
+#main_chat {
     overflow: auto;
 }
-.dbg {
-    background-color: beige;
+.received {
+    text-align: right;
 }
-
-/*  */
-img {
-    height: 90px;
-    border-radius: 80px;
+.chat_message {
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 20px;
 }
-.nome_utente_lista {
-    font-weight: 450;
-    font-size: 20px;
-}
-
 /* Utilities */
 .bg_lightgray {
     background-color: #eaeaea;

@@ -4,7 +4,7 @@ const app = new Vue ({
 
     data: {
         
-        
+        newMessage: "",
         
         sentMessages: [],
 
@@ -99,21 +99,11 @@ const app = new Vue ({
 
         sendMessage () {
             console.log(this.newMessage);
-            this.sentMessages.push(this.newMessage);
+            console.log(this.sentMessages);
+            //this.sentMessages.push(this.newMessage);
         }
             
        
     },
 
-    mounted () {
-        document.addEventListener("keyup", (event) => {
-            if (event.key == "Enter") {
-                this.sendMessage();
-            } 
-        });
-
-    },
-
 })
-
-
