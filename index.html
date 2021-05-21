@@ -86,7 +86,7 @@
 
                             <div class="d-flex align-items-center justify-content-between p-2" v-for="(contact, index) in contacts">
 
-                                <div class="avatar d-flex align-items-center" @click="openChat(contact, index)">
+                                <div class="avatar d-flex align-items-center" @click="selectContact(index)">
     
                                     <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="">
                                     <div class="nome_utente_lista ml-3">
@@ -132,13 +132,40 @@
 
                         <div id="main_chat">
 
-                            <div class="text_area" v-for="contact in contacts">
-                                <div class="message" v-for="message in contact.messages">
+                            <div class="text_area" v-for="(contact, index) in contacts" @click="selectContact(index)" :class="contactSelected === index ? 'active' : ''">
+
+                                <div v-for ="(message, index) in contacts[contactSelected].messages">
+                                    
+                                    <div>
+
+                                        <div class="received p-3 mt-4" v-if="message.status === 'received'">
+                                            <span class="chat_message bg_green">{{ message.text }}</span>
+                                        </div>
+
+                                        <div class="sent p-3 mt-4" v-if="message.status === 'sent'">
+                                            <span class="chat_message bg-white">{{ message.text }}</span>
+                                        </div> 
+
+                                    </div>
                                     
 
-                                    <div id="prova"></div>
+                                </div>
 
-                                    <!-- <div class="received p-3" v-if="message.status === 'received'">
+                               
+                                <!-- <div v-for="(messages, index) in contact">
+                                    <div v-for="(message, index) in messages" if="" >{{message}}</div>
+                                </div> -->
+                                <!-- <div>{{contacts[contactSelected].messages}}</div> -->
+
+                            </div>
+
+                            <!-- <div class="text_area" v-for="(contact, index) in contacts">
+                                <div class="message" v-for="(message, index) in contact.messages">
+                                    
+
+                                    <div id="chatContainer"></div>
+
+                                    <div class="received p-3" v-if="message.status === 'received'">
 
                                         <span class="chat_message bg_green">{{ message.text }}</span>
                                     
@@ -148,10 +175,10 @@
 
                                         <span class="chat_message bg-white">{{ message.text }}</span>
                                     
-                                    </div> -->
+                                    </div>
                                     
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                         

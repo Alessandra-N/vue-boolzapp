@@ -5,9 +5,9 @@ const app = new Vue ({
     data: {
         
         newMessage: "",
-        sentMessages: [],
-        openedChat: [],
-
+        contactSelected: 0,
+        contactClass: "active",
+        
         contacts: [
         {
             name: 'Michele',
@@ -102,30 +102,71 @@ const app = new Vue ({
             console.log(this.sentMessages);
             //this.sentMessages.push(this.newMessage);
         },
+
+        selectContact(index) {
+            console.log(this.contactClass);
+           
+            /* var message2 = message1[1];
+            var message3 = message2.text;
+            console.log(message3); */
             
-        openChat (contact, index) {
+            return this.contactSelected = index
+        },
+
+        /* displayChat(index) {
+            var message1 = this.contacts[this.contactSelected].messages;
+            for(i = 0; i < message1.length; i++) {
+                var prova = message1[i];
+
+                /* document.getElementById("chatContainer").innerHTML = `
+                <div class="received p-3 ml-auto" v-if="${prova.status} === 'received'">
+
+                    <div class="chat_message bg_green">${prova.text}
+                        <div class="ultimo_accesso_text">${prova.date}</div>
+                    </div>
+            
+                </div>
+                
+                <div class="sent" v-if="${prova.status} === 'sent'">
+
+                    <div class="chat_message bg-white">${prova.text}
+                    <div class="ultimo_accesso_text">${prova.date}</div>
+                    </div>
+                
+                </div>`
+
+                console.log(prova.text);
+            }
+        } */
+            
+        /* openChat (contact, index) {
             const contactMessages = this.contacts[index].messages;
             contactMessages.forEach(message => {
                 const {date, text, status} = message;
                 console.log(date, text, status);
 
-                document.getElementById("prova").innerHTML = `
-                <div class="received p-3" v-if="${status} === 'received'">
+                //if (status ==)
+                document.getElementById("chatContainer").innerHTML = `
+                <div class="received p-3 ml-auto" v-if="${status} === 'received'">
 
-                    <span class="chat_message bg_green">${text }</span>
+                    <div class="chat_message bg_green">${text}
+                        <div class="ultimo_accesso_text">${date}</div>
+                    </div>
             
                 </div>
-
+                
                 <div class="sent" v-if="${status} === 'sent'">
 
-                    <span class="chat_message bg-white">${text }</span>
+                    <div class="chat_message bg-white">${text}
+                    <div class="ultimo_accesso_text">${date}</div>
+                    </div>
                 
                 </div>`
 
-            });
+            }); */
             /* console.log(contactMessages[0].text);
-            console.log(contact, index); */
-        },
+            console.log(contact, index); 
+        },*/
 
         /* completeTask(index) {
             var taskCompleted = this.tasks.splice(index, 1);

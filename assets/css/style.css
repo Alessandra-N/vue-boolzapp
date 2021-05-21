@@ -59,11 +59,17 @@ a {
 }
 .received {
     text-align: right;
+    margin: 2rem 1rem 2rem auto;
 }
 .chat_message {
-    margin: 2rem 0;
     padding: 1rem;
     border-radius: 20px;
+    min-width: 100px;
+    max-width: 350px;
+}
+.ultimo_accesso_text{
+    color: gray;
+    font-size: 12px;
 }
 /* Utilities */
 .bg_lightgray {
