@@ -107,8 +107,21 @@ const app = new Vue ({
             const contactMessages = this.contacts[index].messages;
             contactMessages.forEach(message => {
                 const {date, text, status} = message;
-                this.openedChat.push(message);
                 console.log(date, text, status);
+
+                document.getElementById("prova").innerHTML = `
+                <div class="received p-3" v-if="${status} === 'received'">
+
+                    <span class="chat_message bg_green">${text }</span>
+            
+                </div>
+
+                <div class="sent" v-if="${status} === 'sent'">
+
+                    <span class="chat_message bg-white">${text }</span>
+                
+                </div>`
+
             });
             /* console.log(contactMessages[0].text);
             console.log(contact, index); */
