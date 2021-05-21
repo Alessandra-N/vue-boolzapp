@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- CSS -->
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/aa8b984e32.js" crossorigin="anonymous"></script>
+    </head>
+
+    <style>
+        #main_chat {
+        background-image: url(./assets/img/mine.jpg);
+        height: 70vh;
+        }
+    </style>
+
+    <body>
+
+        <div id="app">
+
+            <div class="container m-auto d-flex">
+                
+                <div class="col-5 border-right bg_lightgray">
+                    
+                    <div id="utente" class="top_bar_user d-flex align-items-center justify-content-between p-2 bg_lightgray">
+
+                        <div class="avatar d-flex align-items-center">
+
+                            <img src="./assets/img/avatar_io.jpg" alt="">
+                            <div class="nome_utente_lista ml-3">
+                                Nome Utente
+                            </div>
+
+                        </div>
+
+                        <div class="icone_utente">
+
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div id="barra_notifiche" class="d-flex align-items-center p-4">
+
+                        <i id="campana" class="fas fa-bell-slash text-white rounded-circle"></i>
+                        
+                        <div id="barra_notifiche_destra">
+
+                            <div class="nome_utente_lista">
+                                Ricevi notifiche di nuovi messaggi
+                            </div>
+                            <a href="#">Attiva notifiche desktop</a>
+                        
+                        </div>
+                        
+
+                    </div>
+
+                    <div id="barra_ricerca bg-white">
+                        
+                        <div class="input-group p-2">
+                            
+                            <span class="input-group-text bg-white border-right-0">
+                                <i class="fas fa-search"></i>
+                            </span>    
+                           
+                            <input type="text" class="form-control border-left-0" placeholder="Crea o inizia una nuova chat">
+                        </div>
+
+                    </div>
+
+                    <div id="lista_contatti">
+
+                        <div class="d-flex align-items-center justify-content-between p-2" v-for="(contact, index) in contacts">
+
+                            <div class="avatar d-flex align-items-center" @click="selectContact(index)">
+
+                                <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="">
+                                <div class="nome_utente_lista ml-3">
+                                    {{ contact.name }}
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-7">
+
+                    <div id="barra_main_top" class="top_bar_user d-flex justify-content-between align-items-center bg_lightgray">
+
+                        <div class="avatar d-flex align-items-center">
+
+                            <img :src="`./assets/img/avatar${contacts[contactSelected].avatar}.jpg`" alt="">
+
+                            <div class="ultimo_accesso">
+                                <div class="nome_utente_lista ml-3">
+                                    {{contacts[contactSelected].name}}
+                                </div>
+                                <div class="data_ora_text ml-3">
+                                    Ultimo accesso oggi alle
+                                </div>
+                            </div>
+                            
+
+                        </div>
+
+                        <div class="icone_utente">
+
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div id="main_chat">
+                        
+                        <div class="text_area">
+
+                                
+                            <div class="d-flex" v-for ="message in contacts[contactSelected].messages">
+                                
+                                <div class="received p-3 mt-4 justify-self-right" v-if="message.status === 'received'">
+                                    <div class="chat_message bg-white">{{ message.text }}
+                                        <div class="data_ora_text">{{message.date}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="sent p-3 mt-4" v-if="message.status === 'sent'">
+                                    <div class="chat_message bg_green">{{ message.text }}
+                                        <div class="data_ora_text">{{message.date}}</div>
+                                    </div>
+                                </div> 
+
+                            </div>
+
+                            <div v-for="messageSent in sentMessages">
+                                <div class="sent p-3 mt-4">
+                                    <span class="chat_message bg_green">{{ messageSent }}</span>
+                                </div> 
+                            </div> 
+
+                        </div>
+
+                    </div>
+                    
+                    <div id="barra_main_bot" class="py-2 d-flex justify-content-between align-items-center bg_lightgray">
+
+                        <i class="far fa-smile"></i>
+                        
+                        <input type="text" v-model="newMessage" @keyup.enter="sendMessage">
+                        
+                        <i class="fas fa-microphone"></i>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+        <!-- Vue JS -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <!-- JS -->
+        <script src="./assets/js/main.js"></script>
+    </body>
+</html>
