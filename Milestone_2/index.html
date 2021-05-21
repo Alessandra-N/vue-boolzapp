@@ -131,27 +131,31 @@
                         </div>
 
                         <div id="main_chat">
-
+                            
                             <div class="text_area" v-for="(contact, index) in contacts" @click="selectContact(index)" :class="contactSelected === index ? 'active' : ''">
 
-                                <div v-for ="(message, index) in contacts[contactSelected].messages">
+                                <div v-for ="message in contacts[contactSelected].messages">
                                     
                                     <div>
 
                                         <div class="received p-3 mt-4" v-if="message.status === 'received'">
-                                            <span class="chat_message bg_green">{{ message.text }}</span>
+                                            <span class="chat_message bg-white">{{ message.text }}</span>
                                         </div>
 
                                         <div class="sent p-3 mt-4" v-if="message.status === 'sent'">
-                                            <span class="chat_message bg-white">{{ message.text }}</span>
+                                            <span class="chat_message bg_green">{{ message.text }}</span>
                                         </div> 
 
                                     </div>
-                                    
 
                                 </div>
 
-                               
+                                <!-- <div v-for="messageSent in sentMessages">
+                                    <div class="sent p-3 mt-4">
+                                        <span class="chat_message bg_green">{{ messageSent }}</span>
+                                    </div> 
+                                </div> -->
+
                                 <!-- <div v-for="(messages, index) in contact">
                                     <div v-for="(message, index) in messages" if="" >{{message}}</div>
                                 </div> -->
@@ -182,7 +186,7 @@
 
                         </div>
                         
-                        <div id="barra_main_bot" class="d-flex justify-content-between align-items-center bg_lightgray">
+                        <div id="barra_main_bot" class="py-2 d-flex justify-content-between align-items-center bg_lightgray">
 
                             <i class="far fa-smile"></i>
                             
