@@ -84,9 +84,9 @@
 
                         <div id="lista_contatti">
 
-                            <div class="d-flex align-items-center justify-content-between p-2" v-for="contact in contacts">
+                            <div class="d-flex align-items-center justify-content-between p-2" v-for="(contact, index) in contacts">
 
-                                <div class="avatar d-flex align-items-center">
+                                <div class="avatar d-flex align-items-center" @click="openChat(contact, index)">
     
                                     <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="">
                                     <div class="nome_utente_lista ml-3">

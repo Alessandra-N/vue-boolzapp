@@ -5,8 +5,8 @@ const app = new Vue ({
     data: {
         
         newMessage: "",
-        
         sentMessages: [],
+        openedChat: [],
 
         contacts: [
         {
@@ -101,8 +101,23 @@ const app = new Vue ({
             console.log(this.newMessage);
             console.log(this.sentMessages);
             //this.sentMessages.push(this.newMessage);
-        }
+        },
             
+        openChat (contact, index) {
+            const contactMessages = this.contacts[index].messages;
+            contactMessages.forEach(message => {
+                const {date, text, status} = message;
+                this.openedChat.push(message);
+                console.log(date, text, status);
+            });
+            /* console.log(contactMessages[0].text);
+            console.log(contact, index); */
+        },
+
+        /* completeTask(index) {
+            var taskCompleted = this.tasks.splice(index, 1);
+            this.doneList.push(taskCompleted[0]);
+        }, */
        
     },
 
