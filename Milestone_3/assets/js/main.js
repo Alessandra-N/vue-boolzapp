@@ -115,7 +115,8 @@ const app = new Vue ({
             newAnswer.status = "received";
             console.log(newAnswer);
 
-            setTimeout(this.contacts[this.contactSelected].messages.push(newAnswer), 3000);
+            //setTimeout(this.contacts[this.contactSelected].messages.push(newAnswer), 30000);
+            setTimeout(function(){ this.contacts[this.contactSelected].messages.push(newAnswer); }, 1000);
             
         
         },
