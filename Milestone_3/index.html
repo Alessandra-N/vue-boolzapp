@@ -148,12 +148,7 @@
 
                             </div>
 
-                            <div v-for="messageSent in sentMessages">
-                                <div class="sent p-3 mt-4">
-                                    <span class="chat_message bg_green">{{ messageSent }}</span>
-                                </div> 
-                            </div> 
-
+                  
                         </div>
 
                     </div>
@@ -162,7 +157,7 @@
 
                         <i class="far fa-smile"></i>
                         
-                        <input type="text" v-model="newMessage" @keyup.enter="sendMessage">
+                        <input type="text" v-model="newText" @keyup.enter="sendMessage">
                         
                         <i class="fas fa-microphone"></i>
 

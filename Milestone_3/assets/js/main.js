@@ -4,11 +4,9 @@ const app = new Vue ({
 
     data: {
         
-        newMessage: "",
+        newText: "",
         contactSelected: 0,
         contactClass: "active",
-
-        sentMessages: [],
         
         contacts: [
         {
@@ -104,68 +102,23 @@ const app = new Vue ({
         },
 
         sendMessage () {
-            this.sentMessages.push(this.newMessage);
+            const newMessage = {};
+            newMessage.text = this.newText;
+            newMessage.date = "24/05/2021 15:50:00";
+            newMessage.status = "sent";
+            this.contacts[this.contactSelected].messages.push(newMessage);
+            this.newText = "";
 
-            //setInterval(this.next, 3000)
+            const newAnswer = {};
+            newAnswer.text = "Ok";
+            newAnswer.date = "24/05/2021 15:50:01";
+            newAnswer.status = "received";
+            console.log(newAnswer);
 
+            setTimeout(this.contacts[this.contactSelected].messages.push(newAnswer), 3000);
+            
+        
         },
-
-
-
-        /* displayChat(index) {
-            var message1 = this.contacts[this.contactSelected].messages;
-            for(i = 0; i < message1.length; i++) {
-                var prova = message1[i];
-
-                /* document.getElementById("chatContainer").innerHTML = `
-                <div class="received p-3 ml-auto" v-if="${prova.status} === 'received'">
-
-                    <div class="chat_message bg_green">${prova.text}
-                        <div class="ultimo_accesso_text">${prova.date}</div>
-                    </div>
-            
-                </div>
-                
-                <div class="sent" v-if="${prova.status} === 'sent'">
-
-                    <div class="chat_message bg-white">${prova.text}
-                    <div class="ultimo_accesso_text">${prova.date}</div>
-                    </div>
-                
-                </div>`
-
-                console.log(prova.text);
-            }
-        } */
-            
-        /* openChat (contact, index) {
-            const contactMessages = this.contacts[index].messages;
-            contactMessages.forEach(message => {
-                const {date, text, status} = message;
-                console.log(date, text, status);
-
-                //if (status ==)
-                document.getElementById("chatContainer").innerHTML = `
-                <div class="received p-3 ml-auto" v-if="${status} === 'received'">
-
-                    <div class="chat_message bg_green">${text}
-                        <div class="ultimo_accesso_text">${date}</div>
-                    </div>
-            
-                </div>
-                
-                <div class="sent" v-if="${status} === 'sent'">
-
-                    <div class="chat_message bg-white">${text}
-                    <div class="ultimo_accesso_text">${date}</div>
-                    </div>
-                
-                </div>`
-
-            }); */
-            /* console.log(contactMessages[0].text);
-            console.log(contact, index); 
-        },*/
 
        
     },
