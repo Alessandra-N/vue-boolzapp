@@ -76,6 +76,7 @@ const app = new Vue ({
                 }
             ],
         },
+
         {
             name: 'Luisa',
             avatar: '_4',
@@ -93,6 +94,7 @@ const app = new Vue ({
                 }
             ],
         },
+        
     ]},
 
     methods: {
@@ -123,7 +125,6 @@ const app = new Vue ({
         
         },
 
-       
     },
 
 })

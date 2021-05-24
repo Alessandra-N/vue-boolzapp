@@ -7,6 +7,7 @@ const app = new Vue ({
         newText: "",
         contactSelected: 0,
         contactClass: "active",
+        search: '',
         
         contacts: [
         {
@@ -77,8 +78,25 @@ const app = new Vue ({
             ],
         },
         {
-            name: 'Luisa',
+            name: 'Paolo',
             avatar: '_4',
+            visible: true,
+            messages: [
+                {
+                    date: '10/01/2020 15:30:55',
+                    text: 'Andiamo al cinema stasera?',
+                    status: 'sent'
+                },
+                {
+                    date: '10/01/2020 15:50:00',
+                    text: 'In realtà, preferirei provare la nuova pizzeria',
+                    status: 'received'
+                }
+            ],
+        },
+        {
+            name: 'Luisa',
+            avatar: '_6',
             visible: true,
             messages: [
                 {
@@ -89,6 +107,40 @@ const app = new Vue ({
                 {
                     date: '10/01/2020 15:50:00',
                     text: 'Si, ma preferirei andare al cinema',
+                    status: 'received'
+                }
+            ],
+        },
+        {
+            name: 'Mario',
+            avatar: '_7',
+            visible: true,
+            messages: [
+                {
+                    date: '10/01/2020 15:30:55',
+                    text: "Hai letto l'ultimo libro di Stephen King?",
+                    status: 'sent'
+                },
+                {
+                    date: '10/01/2020 15:50:00',
+                    text: 'No, era troppo lungo.',
+                    status: 'received'
+                }
+            ],
+        },
+        {
+            name: 'Giuseppe',
+            avatar: '_8',
+            visible: true,
+            messages: [
+                {
+                    date: '10/01/2020 15:30:55',
+                    text: "Vieni a pranzo? Mamma ha fatto i cannelloni.",
+                    status: 'sent'
+                },
+                {
+                    date: '10/01/2020 15:50:00',
+                    text: 'Sono già lì.',
                     status: 'received'
                 }
             ],
@@ -124,6 +176,15 @@ const app = new Vue ({
         },
 
        
+    },
+
+    computed: {
+        filteredContacts: function () {
+            console.log(this.contacts);
+            return this.contacts.filter((contact) => {
+                return contact.name.toLowerCase().startsWith(this.search);
+            })
+        }
     },
 
 })

@@ -22,6 +22,7 @@
     </style>
 
     <body>
+        <div class="striscia"></div>
 
         <div id="app">
 
@@ -74,14 +75,14 @@
                                 <i class="fas fa-search"></i>
                             </span>    
                            
-                            <input type="text" class="form-control border-left-0" placeholder="Crea o inizia una nuova chat">
+                            <input type="text" class="form-control border-left-0" placeholder="Crea o inizia una nuova chat" v-model="search">
                         </div>
 
                     </div>
 
                     <div id="lista_contatti">
 
-                        <div class="d-flex align-items-center justify-content-between p-2" v-for="(contact, index) in contacts">
+                        <div class="contatto_s d-flex align-items-center justify-content-between p-3 border-bottom bg-white" v-for="(contact, index) in filteredContacts">
 
                             <div class="avatar d-flex align-items-center" @click="selectContact(index)">
 
@@ -99,7 +100,7 @@
 
                 <div class="col-7">
 
-                    <div id="barra_main_top" class="top_bar_user d-flex justify-content-between align-items-center bg_lightgray">
+                    <div id="barra_main_top" class="top_bar_user d-flex justify-content-between align-items-center bg_lightgray p-2">
 
                         <div class="avatar d-flex align-items-center">
 

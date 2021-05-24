@@ -3,6 +3,15 @@ body {
     background-color: #dbdbd3;
     height: 100vh;
     padding: 2.5rem 0;
+    position: relative;
+}
+.striscia {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 19.7vh;
+    background-color: #009688; 
 }
 .container {
     height: 90vh;
@@ -34,10 +43,14 @@ img {
 }
 
 /* Sidebar */
-#barra_notifiche {
-    background-color: #8edafc;
+#utente {
+    height: 15vh;
 }
 
+#barra_notifiche {
+    background-color: #8edafc;
+    height: 10vh;
+}
 .fa-bell-slash:before {
     content: "\f1f6";
     background-color: white;
@@ -50,12 +63,31 @@ a {
     color: gray;
     text-decoration: underline;
 }
+
+#barra_ricerca {
+    height: 10vh;
+}
 .form-control {
     height: 50px;
+}
+
+#lista_contatti {
+    height: 57vh;
+    overflow: auto;
+}
+.contatto_s:hover {
+    background-color: lightgray!important;
 }
 /* main */
 #main_chat {
     overflow: auto;
+    height: 69.5vh;
+}
+#barra_main_bot {
+    background-color: #f3eeea;
+}
+#barra_main_bot > input {
+    width: 80%;
 }
 .sent {
     text-align: right;
@@ -70,6 +102,9 @@ a {
 .data_ora_text{
     color: gray;
     font-size: 13px;
+}
+#chat {
+    width: 70vh;
 }
 /* Utilities */
 .bg_lightgray {
