@@ -82,6 +82,8 @@ a {
 #main_chat {
     overflow: auto;
     height: 69.5vh;
+    background-image: url("./assets/img/mine.jpg");
+    
 }
 #barra_main_bot {
     background-color: #f3eeea;
