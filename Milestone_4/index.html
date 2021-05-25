@@ -14,22 +14,20 @@
         <script src="https://kit.fontawesome.com/aa8b984e32.js" crossorigin="anonymous"></script>
     </head>
 
-    <style>
-        /* #main_chat {
-        background-image: url(./assets/img/mine.jpg);
-        height: 70vh;
-        } */
-    </style>
-
     <body>
+
+        <!-- Striscia colorata del background -->
         <div class="striscia"></div>
 
+        <!-- Inizio dell'APP -->
         <div id="app">
 
             <div class="container m-auto d-flex">
                 
+                <!-- Qui inizia la SIDEBAR -->
                 <div class="col-5 border-right bg_lightgray">
                     
+                    <!-- BARRA SUPERIORE con immagine dell'utente e icone -->
                     <div id="utente" class="top_bar_user d-flex align-items-center justify-content-between p-2 bg_lightgray">
 
                         <div class="avatar d-flex align-items-center">
@@ -51,6 +49,7 @@
 
                     </div>
 
+                    <!-- BARRA AZZURRA delle notifiche -->
                     <div id="barra_notifiche" class="d-flex align-items-center p-4">
 
                         <i id="campana" class="fas fa-bell-slash text-white rounded-circle"></i>
@@ -67,24 +66,31 @@
 
                     </div>
 
+                    <!-- Barra bianca di RICERCA -->
                     <div id="barra_ricerca bg-white">
                         
                         <div class="input-group p-2">
                             
-                            <span class="input-group-text bg-white border-right-0">
+                            <span class="searchbar bg-white d-flex align-items-center">
                                 <i class="fas fa-search"></i>
-                            </span>    
+                                <input type="text" placeholder="Crea o inizia una nuova chat" v-model="search">
+                            </span>
                            
-                            <input type="text" class="form-control border-left-0" placeholder="Crea o inizia una nuova chat" v-model="search">
                         </div>
 
                     </div>
 
+                    <!-- Inizio della LISTA CONTATTI -->
                     <div id="lista_contatti">
 
-                        <div class="contatto_s d-flex align-items-center justify-content-between p-3 border-bottom bg-white" v-for="(contact, index) in filteredContacts">
+                        <!-- Qui il ciclo for cicla all'interno della lista
+                        (filtrata per essere reattiva dalla barra di ricerca) dei contatti -->
+                        <div class="contatto_s d-flex align-items-center justify-content-between p-3 border-bottom bg-white" v-for="(contact, index) in filteredContacts"  @click="selectContact(index)">
 
-                            <div class="avatar d-flex align-items-center" @click="selectContact(index)">
+                            <!-- Il singolo contatto, generato dinamicamente per creare una lista;
+                            l'event listener ascolta il click sul singolo contatto per renderlo il 
+                            contatto selezionato -->
+                            <div class="avatar d-flex align-items-center">
 
                                 <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="">
                                 <div class="nome_utente_lista ml-3">
@@ -94,12 +100,16 @@
                             </div>
                             
                         </div>
+
                     </div>
 
                 </div>
 
+                <!-- Inizio della SEZIONE PRINCIPALE -->
                 <div class="col-7">
 
+                    <!-- BARRA SUPERIORE della sezione principale;
+                    contiene l'immagine del contatto attivo, il suo ultimo accesso e le icone laterali -->
                     <div id="barra_main_top" class="top_bar_user d-flex justify-content-between align-items-center bg_lightgray p-2">
 
                         <div class="avatar d-flex align-items-center">
@@ -128,19 +138,23 @@
 
                     </div>
 
+                    <!-- CHAT DELL'APPLICAZIONE -->
                     <div id="main_chat">
                         
                         <div class="text_area">
 
-                                
+                            <!-- Il ciclo genera dinamicamente i messaggi presi dall'array di 
+                            messaggi, filtrandoli per status (ricevuto/inviato) -->
                             <div class="d-flex" v-for ="message in contacts[contactSelected].messages">
                                 
+                                <!-- Messaggi RICEVUTI -->
                                 <div class="received p-3 mt-4 justify-self-right" v-if="message.status === 'received'">
                                     <div class="chat_message bg-white">{{ message.text }}
                                         <div class="data_ora_text">{{message.date}}</div>
                                     </div>
                                 </div>
 
+                                <!-- Messaggi INVIATI -->
                                 <div class="sent p-3 mt-4" v-if="message.status === 'sent'">
                                     <div class="chat_message bg_green">{{ message.text }}
                                         <div class="data_ora_text">{{message.date}}</div>
@@ -154,14 +168,16 @@
 
                     </div>
                     
-                    <div id="barra_main_bot" class="py-2 d-flex justify-content-between align-items-center bg_lightgray">
+                    <!-- BARRA INFERIORE della chat -->
+                    <div id="barra_main_bot" class="d-flex justify-content-between align-items-center bg_lightgray">
 
                         <i class="far fa-smile"></i>
                         
-                        <input type="text" v-model="newText" @keyup.enter="sendMessage">
+                        <!-- Attraverso questo input, il messaggio va a modificare il data "newText" del JS
+                        poi, dopo aver premuto "invio", parte il metodo "sendMessage" -->
+                        <input type="text" placeholder="Scrivi un messaggio" v-model="newText" @keyup.enter="sendMessage">
                         
                         <i class="fas fa-microphone"></i>
-
 
                     </div>
 
@@ -173,6 +189,8 @@
         
         <!-- Vue JS -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <!-- Libreria day js -->
+        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
         <!-- JS -->
         <script src="./assets/js/main.js"></script>
     </body>

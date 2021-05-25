@@ -1,4 +1,4 @@
-/* Common */
+/* SFONDO dell'applicazione */
 body {
     background-color: #dbdbd3;
     height: 100vh;
@@ -13,6 +13,8 @@ body {
     height: 19.7vh;
     background-color: #009688; 
 }
+
+/* COMMON */
 .container {
     height: 90vh;
     background-color: white;
@@ -36,10 +38,6 @@ i {
 img {
     height: 90px;
     border-radius: 80px;
-}
-
-.top_bar_user {
-    height: 15vh;
 }
 
 /* Sidebar */
@@ -67,8 +65,14 @@ a {
 #barra_ricerca {
     height: 10vh;
 }
-.form-control {
-    height: 50px;
+.searchbar {
+    width: 100%;
+    height: 6vh;
+    border-radius: 5px;
+}
+.searchbar > input {
+    width: 80%;
+    border: none;
 }
 
 #lista_contatti {
@@ -78,19 +82,17 @@ a {
 .contatto_s:hover {
     background-color: lightgray!important;
 }
-/* main */
+/* MAIN */
+.top_bar_user {
+    height: 15vh;
+}
+
 #main_chat {
     overflow: auto;
-    height: 69.5vh;
-    background-image: url("./assets/img/mine.jpg");
-    
+    height: 63.2vh;
+    background-image: url("../img/mine.jpg");
 }
-#barra_main_bot {
-    background-color: #f3eeea;
-}
-#barra_main_bot > input {
-    width: 80%;
-}
+
 .sent {
     text-align: right;
     margin: 2rem 1rem 2rem auto;
@@ -105,9 +107,19 @@ a {
     color: gray;
     font-size: 13px;
 }
-#chat {
-    width: 70vh;
+
+#barra_main_bot {
+    background-color: #f3eeea;
+    padding: 1rem 1.5rem;
 }
+#barra_main_bot > input {
+    height: 8vh;
+    width: 80%;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 10px;
+}
+
 /* Utilities */
 .bg_lightgray {
     background-color: #eaeaea;

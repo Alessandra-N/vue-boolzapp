@@ -6,7 +6,6 @@ const app = new Vue ({
         
         newText: "",
         contactSelected: 0,
-        contactClass: "active",
         search: '',
         
         contacts: [
@@ -152,23 +151,26 @@ const app = new Vue ({
         selectContact(index) {
             return this.contactSelected = index
         },
-
+        /**##Funzione per inviare messaggi
+         * Crea un nuovo oggetto messaggio e poi lo pusha nell'array di mesaggi del contatto selezionato.*/
         sendMessage () {
             const newMessage = {};
             const selectedMessages = this.contacts[this.contactSelected].messages;
             newMessage.text = this.newText;
-            newMessage.date = "24/05/2021 15:50:00";
+            newMessage.date = dayjs().format("DD/MM/YYYY HH:mm:ss");
             newMessage.status = "sent";
             selectedMessages.push(newMessage);
             this.newText = "";
 
-            const newAnswer = {};
-            newAnswer.text = "Ok";
-            newAnswer.date = "24/05/2021 15:50:01";
-            newAnswer.status = "received";
-            console.log(newAnswer);
-
+           /** ##Funzione per ricevere un messaggio automatico
+            * crea un messaggio di risposta, inviato dopo un secondo attraverso un setTimeout.
+            * con l'aiuto della libreria day.js, la data e l'orario di riezione/invio sono queeli correnti*/ 
+           
             function sendAnswer () {
+                const newAnswer = {};
+                newAnswer.text = "Ok";
+                newAnswer.date = dayjs().format("DD/MM/YYYY HH:mm:ss");
+                newAnswer.status = "received";
                 selectedMessages.push(newAnswer);
             }
             setTimeout(sendAnswer, 1000);
@@ -178,11 +180,13 @@ const app = new Vue ({
        
     },
 
+    /* Computazione per filtrare i contatti, collegata all'input della barra di ricerca.
+    il ToLowerCase è per ottenere risultato sia che si cerchi con la maiuscola che con la minuscola
+    lo startsWith è per filtrare in base all'ordine di digitazione e non al contenuto generale dei messaggi */
     computed: {
         filteredContacts: function () {
-            console.log(this.contacts);
             return this.contacts.filter((contact) => {
-                return contact.name.toLowerCase().startsWith(this.search);
+                return contact.name.toLowerCase().startsWith(this.search.toLowerCase());
             })
         }
     },
